@@ -5,7 +5,10 @@ pip freeze > requirements.txt
 django-admin.py startproject config .
 python manage.py runserver
 
+docker compose up -d --build
+docker compose exec web python manage.py migrate
 
+docker compose exec db_books psql --username=postgres --dbname=postgres
 
 git status
 git add .
