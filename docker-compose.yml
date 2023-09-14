@@ -5,10 +5,11 @@ services:
         build: .
         container_name: "django"
         # command: bash -c 'python manage.py collectstatic --noinput'
+        # command: python /book/manage.py runserver 0.0.0.0:8000
         command: bash -c 'gunicorn config.wsgi -b 0.0.0.0:8000'
         volumes:
-        - static_volume:/code/static
-        - media_volume:/code/media
+        - static_volume:/book/static
+        - media_volume:/book/media
         ports:
         - 8000:8000
         depends_on:
@@ -23,17 +24,19 @@ services:
             - ~/.pg/postgres_data/boooks:/var/lib/postgresql/data/
         env_file:
             - .env
-    # nginx:
-    #     image: nginx
-    #     container_name: "nginx"
-    #     volumes:
-    #     - static_volume:/code/static
-    #     - media_volume:/code/media
-    #     - ./nginx-conf.d:/etc/nginx/conf.d
-    #     depends_on:
-    #         - web
-    #     ports:
-    #         - 80:80
+    nginx:
+        build: 
+            dockerfile: ./Dockerfile
+            context: ./docker/nginx
+        container_name: "nginx"
+        volumes:
+        - static_volume:/book/static
+        - media_volume:/book/media
+
+        depends_on:
+            - web
+        ports:
+            - 80:80
 
 volumes:
     static_volume:
