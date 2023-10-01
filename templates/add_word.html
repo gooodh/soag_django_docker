@@ -1,0 +1,12 @@
+{% extends '_base.html' %}
+
+
+{% block title %}Добвить слово{% endblock %}
+{% block content %}
+  <form method="POST" action=''>
+    {% csrf_token %}
+    Слово на русском: <input type="text" name="word1"><br><br>
+    Перевод на английский: <input type="text" name="word2"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+{% endblock %}

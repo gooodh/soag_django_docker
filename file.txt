@@ -1,0 +1,5 @@
+helo-привет
+world-мир
+instead-вместо
+variables-переменные
+helo-привет

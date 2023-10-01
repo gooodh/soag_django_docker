@@ -1,0 +1,38 @@
+
+{% block title %}Список {% endblock %}
+{% block content %}
+<table>
+  <tbody>
+    {% for word1 in words_list.words_list1 %}
+    <p>English: {{ word1 }}</p>
+    {% endfor %}    
+    {% for word1 in words_list1 %}
+    <p>English: {{ word1 }}</p>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+{% for word2 in words_list.words_list2 %}
+<p>Русские: {{ word2 }}</p>
+{% endfor %}
+
+
+<table>
+    <tr>
+        <th>Field 1</th>
+        ...
+        <th>Field N</th>
+    </tr>
+    {% for word1 in words_list.words_list1%}
+    <tr> 
+        <td>English: {{ word1 }}</td>
+        ...
+    </tr>
+    {% endfor %} 
+    {% for word2 in words_list.words_list2 %}
+    <tr> 
+        ...
+        <td>{{ word2 }}</td>
+    </tr>
+    {% endfor %}
+  </table>

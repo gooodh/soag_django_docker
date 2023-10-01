@@ -1,30 +1,20 @@
-FROM python:3.10
+FROM python:3.10 
 
-SHELL ["/bin/bash", "-c"]
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
+
 RUN pip install --upgrade pip
 RUN apt update
-RUN apt -qy install gcc libjpeg-dev libxslt-dev libpq-dev libmariadb-dev libmariadb-dev-compat gettext cron openssh-client flake8
+RUN apt -qy install gcc libjpeg-dev libxslt-dev libpq-dev libmariadb-dev libmariadb-dev-compat gettext cron openssh-client 
 
-RUN useradd -rms /bin/bash book
-RUN chmod 777 /opt /run
 
-WORKDIR /book
-RUN mkdir /book/static 
-RUN mkdir /book/media
-RUN chown -R book:book /book && chmod 755 /book
+WORKDIR /code
 
-COPY requirements.txt /book/
+COPY requirements.txt /code/
 
 RUN pip install -r requirements.txt
 
-COPY --chown=book:book . .
-USER book
+COPY . /code/
 
-
-
-
-
-
+RUN pip install -r requirements.txt
