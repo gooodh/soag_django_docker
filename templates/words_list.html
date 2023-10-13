@@ -1,19 +1,12 @@
 {% extends '_base.html'%}
 {% block content %}
-<title>{% block title %}My dictionary{% endblock title %}</title>
-
-<table>
-  <tr>
-      <th>English</th>
-      <th>Русские</th>
-  </tr>
+<table class="words_list">
     {% for i, j in data %}
     <tr>
-        <td> {{ i }}: </td> <td> {{ j }} </td>
+        <td>{{i}}</td><td>{{j}}</td>
     </tr>
   {% endfor %}
 
-  
 </table>
 
 {% endblock %}

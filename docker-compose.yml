@@ -1,5 +1,5 @@
 version: '3.9'
-#https://habr.com/ru/companies/yandex_praktikum/articles/755470/
+
 services:
     web:
         build: .
